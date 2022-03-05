@@ -1,14 +1,48 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer')
 const fs = require('fs')
-const generateMarkdown = require('./utils/generateMarkdown')
+const generateMarkdown = require('./utils/generateMarkdown');
+const { type } = require('os');
 // TODO: Create an array of questions for user input
-const questions = [
-    "What is the title of your project?", "What is your GitHub username?",
-    "What is your email address?", "Please write a short description of your project",
-    "What kind of license does your project have?", "What command should be run to install your dependencies?",
-    "What command should be run to run your tests?", "What should the user need to know about using this repo?",
-    "What does the user need to know about conrtibuting to the repo?"
+const questions = [{
+    type: "input",
+    message: "What is the title of your project?",
+    name: "Title",
+}, {
+    type: "input",
+    message: "What is your GitHub username?",
+    name: "GitHub",
+}, {
+    type: "input",
+    message: "What is your email address?",
+    name: "Email",
+}, {
+    type: "input",
+    message: "Please write a short description of your project",
+    name: "Description",
+}, {
+    type: "input",
+    message: "What kind of license does your project have?",
+    name: "License",
+}, {
+    type: "input",
+    message: "What command should be run to install your dependencies?",
+    name: "Dependencies",
+}, {
+    type: "input",
+    message: "What command should be run to run your tests?",
+    name: "Tests",
+}, {
+    type: "input",
+    message: "What should the user need to know about using this repo?",
+    name: "User",
+}, {
+    type: "input",
+    message: "What does the user need to know about contributing to the repo?",
+    name: "Repo",
+},
+
+
 ];
 
 // TODO: Create a function to write README file
@@ -44,3 +78,10 @@ function init() {
 
 // Function call to initialize app
 init();
+
+const userName = questions.userName
+
+axios.get(`https://api.github.com/users/${userName}`)
+.then(questions => {
+  console.log(questions.data);
+});
