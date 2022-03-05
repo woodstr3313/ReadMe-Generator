@@ -46,7 +46,17 @@ const questions = [{
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function(err) {
+        console.log(fileName)
+        console.log(data)
+        if (err) {
+            return console.log(err)
+        } else {
+            console.log("success")
+        }
+    })
+}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -78,10 +88,3 @@ function init() {
 
 // Function call to initialize app
 init();
-
-const userName = questions.userName
-
-axios.get(`https://api.github.com/users/${userName}`)
-.then(questions => {
-  console.log(questions.data);
-});
