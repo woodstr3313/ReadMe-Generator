@@ -1,90 +1,87 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer')
 const fs = require('fs')
-const generateMarkdown = require('./utils/generateMarkdown');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 const { type } = require('os');
 // TODO: Create an array of questions for user input
-const questions = [{
+const questions = [
+  {
     type: "input",
     message: "What is the title of your project?",
-    name: "Title",
-}, {
+    name: "title",
+  },
+  {
     type: "input",
     message: "What is your GitHub username?",
-    name: "GitHub",
-}, {
+    name: "gitHub",
+  },
+  {
     type: "input",
     message: "What is your email address?",
-    name: "Email",
-}, {
+    name: "email",
+  },
+  {
     type: "input",
     message: "Please write a short description of your project",
-    name: "Description",
-}, {
-    type: "input",
+    name: "description",
+  },
+  {
+    type: "list",
     message: "What kind of license does your project have?",
-    name: "License",
-}, {
+    name: "license",
+    choices: [
+      "None",
+      "Apache 2.0",
+      "Boost Software License 1.0",
+      "BSD 3-Clause License",
+      "BSD 2-Clause License",
+      "Eclipse Public License 1.0",
+      "GNU GPL v3",
+      "IBM Public License Version 1.0",
+      "ISC License (ISC)",
+      "The MIT License",
+      "Mozilla Public License 2.0",
+      "The Perl License",
+      "SIL Open Font License 1.1",
+      "The Unlicense",
+      "The Do What the Fuck You Want to Public License",
+      "The zlib/libpng License",
+    ],
+  },
+  {
     type: "input",
     message: "What command should be run to install your dependencies?",
-    name: "Dependencies",
-}, {
+    name: "dependencies",
+  },
+  {
     type: "input",
     message: "What command should be run to run your tests?",
-    name: "Tests",
-}, {
+    name: "tests",
+  },
+  {
     type: "input",
     message: "What should the user need to know about using this repo?",
-    name: "User",
-}, {
+    name: "user",
+  },
+  {
     type: "input",
     message: "What does the user need to know about contributing to the repo?",
-    name: "Repo",
-},
-
-
+    name: "repo",
+  },
 ];
 
-// TODO: Create a function to write README file
+// Function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, function(err) {
-        console.log(fileName)
-        console.log(data)
-        if (err) {
-            return console.log(err)
-        } else {
-            console.log("success")
-        }
-    })
+    license = data.license;
+    fs.writeFile(fileName, generateMarkdown(data));
+
 }
 
-// TODO: Create a function to initialize app
+// Function to initialize app
 function init() {
-    inquirer
-  .prompt([
-    {
-      type: 'input',
-      message: questions[0],
-      name: 'username',
-    },
-    {
-      type: 'password',
-      message: questions[1],
-      name: 'password',
-    },
-    {
-      type: 'password',
-      message: questions[2],
-      name: 'confirm',
-    },
-  ])
-  .then((response) =>
-    response.confirm === response.password
-      ? console.log('Success!')
-      : console.log('You forgot your password already?!')
-  );
+    inquirer.prompt(questions)
+  .then((response) => writeToFile('newREADME.md', response))
 
 }
-
-// Function call to initialize app
+// Function call to initalize app
 init();
