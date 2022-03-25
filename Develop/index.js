@@ -73,9 +73,16 @@ const questions = [
 // Function to write README file
 function writeToFile(fileName, data) {
     license = data.license;
-    fs.writeFile(fileName, generateMarkdown(data));
-
-}
+    fs.writeFile(fileName, generateMarkdown(data), (err) => {
+      if (err)
+        console.log(err);
+      else {
+        console.log("File written successfully\n");
+        console.log("The written has the following contents:");
+        console.log(fs.readFileSync(fileName, "utf8"));
+      }
+    })
+  }
 
 // Function to initialize app
 function init() {
@@ -85,3 +92,4 @@ function init() {
 }
 // Function call to initalize app
 init();
+ 
