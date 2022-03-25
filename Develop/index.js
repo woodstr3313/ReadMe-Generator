@@ -72,7 +72,7 @@ const questions = [
 
 // Function to write README file
 function writeToFile(fileName, data) {
-    license = data.license;
+    console.log(data);
     fs.writeFile(fileName, generateMarkdown(data), (err) => {
       if (err)
         console.log(err);
