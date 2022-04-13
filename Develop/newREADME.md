@@ -1,7 +1,7 @@
-# New
+# New Project
 
 ## Description
-  Its really cool 
+  Its great!
 
 ## Table of Contents (Optional)
 
@@ -10,16 +10,15 @@ If your README is long, add a table of contents to make it easy for users to fin
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [Contributing](#contributing)
+- [Contributing](#repo)
 - [Credits](#credits)
-- [License](#license)
 - [Tests](#test)
 
 ## Installation
   npm i
 
 ## Usage
-  Its public
+  Its easy
 Include screenshots as needed.
 
 ## Credits
@@ -34,8 +33,8 @@ If you used any third-party assets that require attribution, list the creators w
 If you followed tutorials, include links to those here as well.
 
 ## License
-[![License: IPL 1.0](https://img.shields.io/badge/License-IPL_1.0-blue.svg)]
-(https://opensource.org/licenses/IPL-1.0)
+[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)]
+(https://www.boost.org/LICENSE_1_0.txt)
 
 ---
 
@@ -46,7 +45,7 @@ If you followed tutorials, include links to those here as well.
 If your project has a lot of features, list them here.
 
 ## How to Contribute
-  its cool
+  you can contribute here
 
 ## Tests
-  run test
+  node run
